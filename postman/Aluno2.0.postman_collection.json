@@ -1,0 +1,55 @@
+{
+  "info": {
+    "name": "Aluno2.0 - API de alunos",
+    "description": "Coleção para CRUD, filtros combináveis e demonstração de persistência após reiniciar a aplicação.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    { "key": "baseUrl", "value": "http://localhost:8080" },
+    { "key": "id", "value": "1" }
+  ],
+  "item": [
+    {
+      "name": "Cadastrar aluno (ID gerado pelo banco)",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"João da Silva\",\n  \"idade\": 20,\n  \"curso\": \"Análise e Desenvolvimento de Sistemas\",\n  \"cidade\": \"Cascavel\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": "{{baseUrl}}/alunos"
+      }
+    },
+    {
+      "name": "Listar todos",
+      "request": { "method": "GET", "url": "{{baseUrl}}/alunos" }
+    },
+    {
+      "name": "Filtrar por nome, curso e cidade",
+      "request": { "method": "GET", "url": "{{baseUrl}}/alunos?nome=Joao&curso=Analise&cidade=Cascavel" }
+    },
+    {
+      "name": "Buscar por ID",
+      "request": { "method": "GET", "url": "{{baseUrl}}/alunos/{{id}}" }
+    },
+    {
+      "name": "Atualizar por ID",
+      "request": {
+        "method": "PUT",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"nome\": \"João da Silva\",\n  \"idade\": 21,\n  \"curso\": \"Análise e Desenvolvimento de Sistemas\",\n  \"cidade\": \"Cascavel\"\n}",
+          "options": { "raw": { "language": "json" } }
+        },
+        "url": "{{baseUrl}}/alunos/{{id}}"
+      }
+    },
+    {
+      "name": "Excluir por ID",
+      "request": { "method": "DELETE", "url": "{{baseUrl}}/alunos/{{id}}" }
+    }
+  ]
+}
